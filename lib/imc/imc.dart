@@ -76,9 +76,6 @@ class _HomeState extends State<Home> {
     });
   }
 
-  bool _hasCallSupport = false;
-  Future<void>? _launched;
-  String _phone = '';
   final uri = Uri.parse("http://systecango.ueuo.com/");
 
   @override
@@ -86,9 +83,7 @@ class _HomeState extends State<Home> {
     super.initState();
     // Check for phone call support.
     canLaunchUrl(Uri(scheme: 'tel', path: '123')).then((bool result) {
-      setState(() {
-        _hasCallSupport = result;
-      });
+      setState(() {});
     });
   }
 
@@ -110,16 +105,28 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Calculadora de IMC"),
+        title: const TextWithTap(
+          "Calculadora de IMC",
+          color: Colors.white,
+        ),
         centerTitle: true,
         elevation: .0,
         backgroundColor: Colors.green,
         actions: [
           IconButton(
-              onPressed: _resetFieds, icon: const Icon(CupertinoIcons.refresh)),
+            onPressed: _resetFieds,
+            icon: const Icon(
+              CupertinoIcons.refresh,
+              color: Colors.white,
+            ),
+          ),
           IconButton(
-              onPressed: () => Get.to(DemoMWExpansionPanelScreen2()),
-              icon: const Icon(CupertinoIcons.app_badge_fill)),
+            onPressed: () => Get.to(const DemoMWExpansionPanelScreen2()),
+            icon: const Icon(
+              CupertinoIcons.app_badge_fill,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
 
@@ -137,7 +144,7 @@ class _HomeState extends State<Home> {
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                     labelText: "Peso em (Kg)",
-                    labelStyle: TextStyle(color: Colors.green)),
+                    labelStyle: TextStyle(color: Colors.green, fontSize: 25.0)),
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.green, fontSize: 25.0),
                 controller: weightController,
@@ -151,7 +158,7 @@ class _HomeState extends State<Home> {
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: "Altura em (cm)",
-                    labelStyle: TextStyle(color: Colors.green),
+                    labelStyle: TextStyle(color: Colors.green, fontSize: 25.0),
                   ),
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.green, fontSize: 25.0),
@@ -169,6 +176,7 @@ class _HomeState extends State<Home> {
                     mConercerBottomSheet(context);
                   }
                 },
+                textColor: Colors.white,
                 color: Colors.green,
                 marginTop: 10.0,
                 marginBottom: 10.0,
@@ -235,14 +243,14 @@ class _HomeState extends State<Home> {
   }
 
   Widget getCard4() {
-    return Container(
+    return SizedBox(
       height: 210,
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(16),
                 bottomLeft: Radius.circular(16),
               ),
@@ -251,46 +259,54 @@ class _HomeState extends State<Home> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.wine_bar_outlined, color: Colors.green, size: 40),
+                const Icon(Icons.wine_bar_outlined,
+                    color: Colors.green, size: 40),
                 8.height,
-                TextWithTap('Calculadora de IMC (e peso ideal)',
-                  fontSize:size: 18,
-                  marginButton:8.0
-                  ),
-               
+                const TextWithTap(
+                  'Calculadora de IMC (e peso ideal)',
+                  fontSize: 18,
+                  marginBottom: 8.0,
+                  fontWeight: FontWeight.bold,
+                ),
                 GestureDetector(
                   onTap: () => _makePhoneCall("+244 947875307"),
                   child: TextIcon(
-                    edgeInsets:
-                        EdgeInsets.only(left: 0, right: 8, bottom: 4, top: 4),
-                    prefix: Icon(Icons.call, size: 14),
+                    edgeInsets: const EdgeInsets.only(
+                        left: 0, right: 8, bottom: 4, top: 4),
+                    prefix: const Icon(Icons.call, size: 14),
                     text: "+244 947875307",
-                    textStyle:TextStyle(size: 14),
+                    textStyle: const TextStyle(fontSize: 14),
                   ),
                 ),
                 GestureDetector(
                   onTap: () => _launchInWebViewOrVC(uri),
                   child: TextIcon(
-                    edgeInsets:
-                        EdgeInsets.only(left: 0, right: 8, bottom: 4, top: 4),
-                    prefix: Icon(Icons.web, size: 14),
+                    edgeInsets: const EdgeInsets.only(
+                      left: 0,
+                      right: 8,
+                      bottom: 4,
+                    ),
+                    prefix: const Icon(Icons.web, size: 14),
                     text: "WWW.SYSTECANGO.UEUO.COM",
-                    textStyle: TextStyle(size: 14),
+                    textStyle: const TextStyle(fontSize: 14),
                   ),
                 ),
                 TextIcon(
-                  edgeInsets:
-                      EdgeInsets.only(left: 0, right: 8, bottom: 4, top: 4),
-                  prefix: Icon(Icons.location_on_outlined, size: 14),
+                  edgeInsets: const EdgeInsets.only(
+                    left: 0,
+                    right: 8,
+                    bottom: 4,
+                  ),
+                  prefix: const Icon(Icons.location_on_outlined, size: 14),
                   text: "LUANDA ANGOLA ",
-                  textStyle: TextStyle(size: 14),
+                  textStyle: const TextStyle(fontSize: 12),
                 ),
               ],
             ),
           ).expand(),
           Container(
             width: 90,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(16),
                 bottomRight: Radius.circular(16),

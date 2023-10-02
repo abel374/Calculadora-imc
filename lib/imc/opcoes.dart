@@ -20,14 +20,17 @@ class _DemoMWExpansionPanelScreen2State
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informações sobre  IMC"),
+        title: const TextWithTap(
+          "Informações sobre  IMC",
+        ),
+        foregroundColor: Colors.white,
         centerTitle: true,
         elevation: .0,
         backgroundColor: Colors.green,
       ),
       body: ListView.builder(
-        padding: EdgeInsets.only(bottom: 30, top: 26),
-        physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 30, top: 26),
+        physics: const BouncingScrollPhysics(),
         itemCount: listTitulo.length,
         itemBuilder: (context, index) {
           return Container(
@@ -44,12 +47,13 @@ class _DemoMWExpansionPanelScreen2State
                   // 'Item ${index + 1}',
                   style: primaryTextStyle(),
                 ),
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundImage: AssetImage('images/systecango.jpg'),
                   radius: 20,
                 ),
                 expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                childrenPadding: EdgeInsets.only(left: 32, top: 16, bottom: 16),
+                childrenPadding:
+                    const EdgeInsets.only(left: 32, top: 16, bottom: 16),
                 collapsedIconColor: context.iconColor,
                 iconColor: context.iconColor,
                 children: [
@@ -115,7 +119,7 @@ class _DemoMWExpansionPanelScreen2State
                     marginRight: 12.9,
                   ),
                   2.height,
-                  Divider(
+                  const Divider(
                     endIndent: 32,
                     color: Colors.black54,
                   ),
@@ -146,21 +150,21 @@ class _DemoMWExpansionPanelScreen2State
                   Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.all(4),
-                        margin: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
+                        margin: const EdgeInsets.all(4),
                         decoration: boxDecorationDefault(
                             border: Border.all(color: Colors.black26)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.sports_handball,
                           color: Colors.black54,
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(4),
-                        margin: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
+                        margin: const EdgeInsets.all(4),
                         decoration: boxDecorationDefault(
                             border: Border.all(color: Colors.black26)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.apartment_outlined,
                           color: Colors.black54,
                         ),
